@@ -13,8 +13,8 @@ import static org.junit.Assert.assertEquals;
 public class OperatorsTest {
 	
 	private Operators testOp;
-	@Rule
-	final ExpectedException exception = ExpectedException.none();
+//	@Rule
+//	final ExpectedException exception = ExpectedException.none();
 	
 	
 	@Before
