@@ -6,16 +6,29 @@ import scan.Scan;
 
 public class ui {
 	
+	
+	private String selectOperation = "";
+	private boolean eFlag=false;
+	
 	public void run() {
-		String selectOperation = getOperations();
-		Operators Operation = new Operators();
-		getResults(selectOperation, Operation);
 		
+		while (eFlag == false) {
+			selectOperation = getOperations();
+			Operators operationType = new Operators();
+			getResults(selectOperation, operationType);
+			
+			if (selectOperation.equals("e")) {
+				eFlag = true;
+			}
+			else {
+				eFlag = false;
+			}
+
+		}
 	}
 	
 	public String getOperations() {
 		
-		try {
 			System.out.println("========================");
 			System.out.println("Please select operators");
 			System.out.println("========================");
@@ -23,20 +36,29 @@ public class ui {
 			System.out.println("- (s) Subtract");
 			System.out.println("- (m) Multiply");
 			System.out.println("- (d) Division");
+			System.out.println("- (e) Exit");
 			
 			return Scan.stringScan();
-			
-		} catch (Exception e) {
-			System.out.println("Exception has occurred. Please refer to message -> "+e.getMessage());
-		}
-		return "";
 
 	}
 	
-	public void getResults(String selectOperation, Operators Operation) {
-		switch(selectOperation) {
+	public double getFirstNum() {
+		System.out.println("Enter first number");
+		double num = Scan.intScan();
+		return num;
+		
+	}
+	
+	public double getSecondNum() {
+		System.out.println("Enter second number");
+		double num = Scan.intScan();
+		return num;
+	}
+	
+	public void getResults(String selection, Operators Operation) {
+		switch(selection) {
 		case "a":
-			System.out.println("Results: "+ Operation.add(Scan.intScan(), Scan.intScan()));
+			System.out.println("Results: "+ Operation.add(getFirstNum(), getSecondNum()));
 			break;
 		case "s":
 			System.out.println("Results: "+Operation.subtract(Scan.intScan(), Scan.intScan()));
@@ -46,6 +68,10 @@ public class ui {
 			break;
 		case "d":
 			System.out.println("Results: "+Operation.division(Scan.intScan(), Scan.intScan()));
+			break;
+			
+		case "e":
+			System.out.println("Exiting Calculator App");
 			break;
 		}
 	}
