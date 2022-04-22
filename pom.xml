@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.verion}</version>
+			<version>${junit.verion}</version>woul
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
