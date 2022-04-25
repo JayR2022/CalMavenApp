@@ -1,18 +1,19 @@
 package ui;
 
 
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import operators.Operators;
 import scan.Scan;
 
-public class ui {
-	
-	
-//	private String selectOperation = "";
+public class Ui {
+		
 	private boolean eFlag=false;
+	
+	public Ui() {
+		
+	}
 	
 	public void run() {
 		while (eFlag == false) {
@@ -26,8 +27,6 @@ public class ui {
 			else {
 				eFlag = false;
 			}
-//			System.out.println("Is it empty? "+selectOperation.isEmpty());
-
 		}
 	}
 	
@@ -94,23 +93,5 @@ public class ui {
 			break;
 		}
 	}
-
-	
-//	public void run() {
-////		selectOperation = getOperations();
-//		while (eFlag == false) {
-//			selectOperation = getOperations();
-//			Operators operationType = new Operators();
-//			getResults(selectOperation, operationType);
-//			
-//			if (selectOperation.equals("e")) {
-//				eFlag = true;
-//			}
-//			else {
-//				eFlag = false;
-//			}
-//
-//		}
-//	}
 	
 }

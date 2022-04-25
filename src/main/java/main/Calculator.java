@@ -1,11 +1,11 @@
 package main;
 
-import ui.ui;
+import ui.Ui;
 import scan.Scan;
 public class Calculator {
 	
 	public static void main(String[] args) {
-		ui calcUi = new ui();
+		Ui calcUi = new Ui();
 		calcUi.run();
 		Scan.closeScan();
 		}
