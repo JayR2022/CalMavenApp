@@ -1,19 +1,22 @@
 package ui;
 
 
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import operators.Operators;
 import scan.Scan;
 
 public class ui {
 	
 	
-	private String selectOperation = "";
+//	private String selectOperation = "";
 	private boolean eFlag=false;
 	
 	public void run() {
-		
 		while (eFlag == false) {
-			selectOperation = getOperations();
+			String selectOperation = getOperations();
 			Operators operationType = new Operators();
 			getResults(selectOperation, operationType);
 			
@@ -23,22 +26,38 @@ public class ui {
 			else {
 				eFlag = false;
 			}
+//			System.out.println("Is it empty? "+selectOperation.isEmpty());
 
 		}
 	}
 	
 	public String getOperations() {
-		
-			System.out.println("========================");
-			System.out.println("Please select operators");
-			System.out.println("========================");
-			System.out.println("- (a) Add");
-			System.out.println("- (s) Subtract");
-			System.out.println("- (m) Multiply");
-			System.out.println("- (d) Division");
-			System.out.println("- (e) Exit");
+			boolean matchFound = false;
+			String selection="";
 			
-			return Scan.stringScan();
+			while (matchFound==false) {
+				System.out.println("========================");
+				System.out.println("Please select operators");
+				System.out.println("========================");
+				System.out.println("- (a) Add");
+				System.out.println("- (s) Subtract");
+				System.out.println("- (m) Multiply");
+				System.out.println("- (d) Division");
+				System.out.println("- (e) Exit");
+				
+				selection = Scan.stringScan();
+				
+				Pattern pattern = Pattern.compile("(a|s|m|d|e|)");
+				Matcher matcher = pattern.matcher(selection);
+				matchFound = matcher.find();
+				
+				if (matchFound == false) {					
+					System.out.println("Invalid entry, please choose options 'a' or 's' or 'm' or 'd' or 'e' ");
+				}
+				
+			}
+				
+			return selection;
 
 	}
 	
@@ -76,4 +95,22 @@ public class ui {
 		}
 	}
 
+	
+//	public void run() {
+////		selectOperation = getOperations();
+//		while (eFlag == false) {
+//			selectOperation = getOperations();
+//			Operators operationType = new Operators();
+//			getResults(selectOperation, operationType);
+//			
+//			if (selectOperation.equals("e")) {
+//				eFlag = true;
+//			}
+//			else {
+//				eFlag = false;
+//			}
+//
+//		}
+//	}
+	
 }
